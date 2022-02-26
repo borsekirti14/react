@@ -4,7 +4,7 @@ import * as dropEffects from "./dropEffects";
 
 const insideStyle = {
     backgroundColor: "#cccccc",
-    opacity: 1.5,
+    opacity: 1.0,
 };
 
 const DropTarget = props => {
@@ -32,15 +32,19 @@ const DropTarget = props => {
     const dragLeave = () => setIsOver(false);
 
     return (
-        <div 
+        <>
+        <div
             onDragOver={dragOver}
             onDrop={drop}
             onDragEnter={dragEnter}
             onDragLeave={dragLeave}
-            style={{ width: "100%", height: "100%", ...(isOver ? insideStyle : {}) }}
+            style={{ width: "100%", height: "100%", ...(isOver ? insideStyle : {})}}
         >
             {props.children}
         </div>
+        
+        </>
+        
     );
 };
 

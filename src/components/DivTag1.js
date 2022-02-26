@@ -13,18 +13,22 @@ export default (props) => {
     const [items, setItems] = React.useState([]);
     const [circle,setCircle] = useState([])
     const [margin,setMargin] = useState("");
-    const totalSwitches = Object.keys(props.data).length;
-    
+    // const totalSwitches = Object.keys(props.data).length;
+    const data = props.data;
+    const totalSwitches = data.switches;
+    const touchName = data.name;
     // objectLength = Object.keys(exampleObject).length
-    // console.log("total switches: " +totalSwitches)
+    
     const itemDropped = item => {
         let localMargin;
-        if(totalSwitches === 2){
-            localMargin = "40px 5px 40px 5px";
+        if(totalSwitches === "2"){
+            localMargin = "40px 15px 40px 15px";
             console.log(localMargin);
-            setMargin("40px 5px 40px 5px")
+            setMargin("50px 10px 50px 10px")
+        }else if(totalSwitches === "8"){
+            setMargin("20px 25px 20px 30px")
         }else{
-            setMargin("10px")
+            setMargin("20px 20px 20px 20px")
         }
         if(items.length < totalSwitches){
             console.log("DivTag1 : "+item)            
@@ -41,20 +45,21 @@ export default (props) => {
     };
     return (             
          //below is working code
+        <>
+            
+            <DropTarget onItemDropped={itemDropped} dropEffect="link">
+                {items.map(e => (
 
-        <DropTarget onItemDropped={itemDropped} dropEffect="link">
-        {console.log("margin: "+margin)}
-
-            {items.map(e => (
+                    <div className="hello" key={e} style={{ margin: margin }}>
+                        {/* <span name={"1"} onClick={handleRemoveItem} style={{float:"right",visibility:"hidden"}} >
+                            x
+                        </span> */}
+                        <img src={e} style={{width:"25px"}}></img>
+                    </div>
+                ))}
                 
-                <div className="hello" key={e} style={{margin:margin}}>
-                    <span name={"1"} onClick={handleRemoveItem} style={{float:"right",visibility:"hidden"}} >
-                        x
-                    </span>
-                    <img src={e} style={{width:"25px"}}></img>
-                </div> 
-            ))}
-        </DropTarget>     
+            </DropTarget>
+            </>     
     );
     // return (   
         // <div>

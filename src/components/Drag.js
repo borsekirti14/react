@@ -9,9 +9,7 @@ const draggingStyle = {
 const Drag = props => {
     const [isDragging, setIsDragging] = React.useState(false);
     const image = React.useRef(null);
-    // console.log("----------props----------")
-    //     console.log(props);
-    //     console.log("----------props----------")
+    
     React.useEffect(() => {
         image.current = null;        
         if (props.children.props) {
