@@ -1,0 +1,7 @@
+
+We have used antd form component. In that have used add fields feature to add the same 2 dropdowns for the second switch board.
+But while clicking on add button by default the size of second switch board is set as per the 1st switchboard size. When we change the
+value for second switchboard, 1st switchboard size also changes.
+What we want is if we click on add button the frame size shoud not change. it should be independent from one another.
+ 
+
